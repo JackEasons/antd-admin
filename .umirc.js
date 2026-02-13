@@ -5,11 +5,12 @@ const path = require('path')
 const lessToJs = require('less-vars-to-js')
 const isDevelopment = process.env.NODE_ENV === 'development'
 
-const { theme } = require('antd/lib')
-const { convertLegacyToken } = require('@ant-design/compatible/lib')
+const { theme } = require('antd')
 
 const mapToken = theme.defaultAlgorithm(theme.defaultSeed)
-const v4Token = convertLegacyToken(mapToken)
+const v4Token = Object.fromEntries(
+  Object.entries(mapToken).map(([k, v]) => [k, typeof v === 'string' ? v : String(v)])
+)
 
 // how to speed compile: https://umijs.org/guide/boost-compile-speed
 export default {

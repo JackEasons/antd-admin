@@ -5,9 +5,9 @@ import { i18n } from "@lingui/core"
 import { I18nProvider } from '@lingui/react'
 import { getLocale } from 'utils'
 import { zh, en, pt } from 'make-plural/plurals'
-import zhCN from 'antd/lib/locale/zh_CN'
-import enUS from 'antd/lib/locale/en_US'
-import ptBR from 'antd/lib/locale/pt_BR'
+import zhCN from 'antd/locale/zh_CN'
+import enUS from 'antd/locale/en_US'
+import ptBR from 'antd/locale/pt_BR'
 
 import BaseLayout from './BaseLayout'
 
