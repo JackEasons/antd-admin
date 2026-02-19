@@ -64,7 +64,7 @@ export default function request(options) {
     .catch(error => {
       const { response, message: errMsg, code, name } = error
 
-      // axios v2 cancellation can surface as ERR_CANCELED / CanceledError or message matching our sentinel
+      // axios v1 cancellation can surface as ERR_CANCELED / CanceledError or message matching our sentinel
       if (String(errMsg) === CANCEL_REQUEST_MESSAGE || code === 'ERR_CANCELED' || name === 'CanceledError') {
         return {
           success: false,
