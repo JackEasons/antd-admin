@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactEcharts from 'echarts-for-react'
-
-require('echarts-liquidfill')
+import * as echarts from 'echarts'
+import 'echarts-liquidfill'
 
 const LiquidfillComponent = () => {
   const option = {
@@ -17,6 +17,7 @@ const LiquidfillComponent = () => {
       <div className="parent">
         <label>render a Liquidfill chart:</label>
         <ReactEcharts
+          echarts={echarts}
           option={option}
           style={{
             height: '400px',

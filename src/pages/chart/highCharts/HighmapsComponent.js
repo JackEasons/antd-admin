@@ -1,5 +1,6 @@
 import React from 'react'
 import Highcharts from 'highcharts/highmaps'
+import Accessibility from 'highcharts/modules/accessibility'
 import HighchartsReact from 'highcharts-react-official'
 import maps from './mapdata/europe'
 
@@ -75,6 +76,8 @@ const config = {
     },
   ],
 }
+
+Accessibility(Highcharts)
 
 const HighmapsComponent = () => {
   return <HighchartsReact highcharts={Highcharts} constructorType={'mapChart'} options={config} />

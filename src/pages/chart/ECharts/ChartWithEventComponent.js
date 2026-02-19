@@ -41,8 +41,9 @@ const ChartWithEventComponent = () => {
             { value: 135, name: '视频广告' },
             { value: 1548, name: '搜索引擎' },
           ],
-          itemStyle: {
-            emphasis: {
+          itemStyle: {},
+          emphasis: {
+            itemStyle: {
               shadowBlur: 10,
               shadowOffsetX: 0,
               shadowColor: 'rgba(0, 0, 0, 0.5)',

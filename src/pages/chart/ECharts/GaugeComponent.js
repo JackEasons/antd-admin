@@ -37,13 +37,10 @@ class GaugeComponent extends React.Component {
           },
           axisLabel: {
             // 坐标轴小标记
-            textStyle: {
-              // 属性lineStyle控制线条样式
-              fontWeight: 'bolder',
-              color: '#fff',
-              shadowColor: '#fff', // 默认透明
-              shadowBlur: 10,
-            },
+            fontWeight: 'bolder',
+            color: '#fff',
+            shadowColor: '#fff', // 默认透明
+            shadowBlur: 10,
           },
           axisTick: {
             // 坐标轴小标记
@@ -89,11 +86,9 @@ class GaugeComponent extends React.Component {
             shadowColor: '#fff', // 默认透明
             shadowBlur: 5,
             offsetCenter: [0, '50%'], // x, y，单位px
-            textStyle: {
-              // 其余属性默认使用全局文本样式，详见TEXTSTYLE
-              fontWeight: 'bolder',
-              color: '#fff',
-            },
+            // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+            fontWeight: 'bolder',
+            color: '#fff',
           },
           data: [{ value: 40, name: 'km/h' }],
         },
@@ -118,13 +113,10 @@ class GaugeComponent extends React.Component {
           },
           axisLabel: {
             // 坐标轴小标记
-            textStyle: {
-              // 属性lineStyle控制线条样式
-              fontWeight: 'bolder',
-              color: '#fff',
-              shadowColor: '#fff', // 默认透明
-              shadowBlur: 10,
-            },
+            fontWeight: 'bolder',
+            color: '#fff',
+            shadowColor: '#fff', // 默认透明
+            shadowBlur: 10,
           },
           axisTick: {
             // 坐标轴小标记
@@ -172,11 +164,9 @@ class GaugeComponent extends React.Component {
             width: 80,
             height: 30,
             offsetCenter: [25, '20%'], // x, y，单位px
-            textStyle: {
-              // 其余属性默认使用全局文本样式，详见TEXTSTYLE
-              fontWeight: 'bolder',
-              color: '#fff',
-            },
+            // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+            fontWeight: 'bolder',
+            color: '#fff',
           },
           data: [{ value: 1.5, name: 'x1000 r/min' }],
         },
@@ -211,13 +201,10 @@ class GaugeComponent extends React.Component {
             },
           },
           axisLabel: {
-            textStyle: {
-              // 属性lineStyle控制线条样式
-              fontWeight: 'bolder',
-              color: '#fff',
-              shadowColor: '#fff', // 默认透明
-              shadowBlur: 10,
-            },
+            fontWeight: 'bolder',
+            color: '#fff',
+            shadowColor: '#fff', // 默认透明
+            shadowBlur: 10,
             formatter(v) {
               switch (`${v}`) {
                 case '0':
@@ -280,13 +267,10 @@ class GaugeComponent extends React.Component {
             show: false,
           },
           axisLabel: {
-            textStyle: {
-              // 属性lineStyle控制线条样式
-              fontWeight: 'bolder',
-              color: '#fff',
-              shadowColor: '#fff', // 默认透明
-              shadowBlur: 10,
-            },
+            fontWeight: 'bolder',
+            color: '#fff',
+            shadowColor: '#fff', // 默认透明
+            shadowBlur: 10,
             formatter(v) {
               switch (`${v}`) {
                 case '0':

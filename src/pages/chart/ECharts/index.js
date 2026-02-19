@@ -32,14 +32,6 @@ const chartList = [
     value: 'dynamic',
   },
   {
-    label: 'MapChart',
-    value: 'map',
-  },
-  {
-    label: 'AirportCoord',
-    value: 'airport',
-  },
-  {
     label: 'Graph',
     value: 'graph',
   },

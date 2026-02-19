@@ -1,5 +1,6 @@
 import React from 'react'
 import Highcharts from 'highcharts/highstock'
+import Accessibility from 'highcharts/modules/accessibility'
 import HighchartsReact from 'highcharts-react-official'
 
 const data = [
@@ -102,5 +103,7 @@ const HighstockComponent = () => {
     />
   )
 }
+
+Accessibility(Highcharts)
 
 export default HighstockComponent

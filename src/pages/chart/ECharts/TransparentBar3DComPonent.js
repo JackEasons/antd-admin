@@ -264,10 +264,8 @@ const option = {
 
       label: {
         show: false,
-        textStyle: {
-          fontSize: 16,
-          borderWidth: 1,
-        },
+        fontSize: 16,
+        borderWidth: 1,
       },
 
       itemStyle: {
@@ -276,10 +274,8 @@ const option = {
 
       emphasis: {
         label: {
-          textStyle: {
-            fontSize: 20,
-            color: '#900',
-          },
+          fontSize: 20,
+          color: '#900',
         },
         itemStyle: {
           color: '#900',

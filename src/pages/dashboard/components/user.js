@@ -37,7 +37,7 @@ function User({ avatar, username, sales = 0, sold = 0 }) {
         </div>
       </div>
       <div className={styles.footer}>
-        <Button type="ghost" size="large">
+        <Button size="large">
           View Profile
         </Button>
       </div>

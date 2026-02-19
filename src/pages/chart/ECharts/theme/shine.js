@@ -1,32 +1,6 @@
-/* global define */
-;(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // eslint-disable-line
-    // AMD. Register as an anonymous module.
-    define(['exports', 'echarts'], factory) // eslint-disable-line
-  } else if (
-    typeof exports === 'object' &&
-    typeof exports.nodeName !== 'string'
-  ) {
-    // CommonJS
-    factory(exports, require('echarts'))
-  } else {
-    // Browser globals
-    factory({}, root.echarts)
-  }
-})(this, (exports, echarts) => {
-  let log = function(msg) {
-    if (typeof console !== 'undefined') {
-      /* eslint-disable */
-      console && console.error && console.error(msg)
-    }
-  }
-  if (!echarts) {
-    log('ECharts is not Loaded')
-    return
-  }
+import * as echarts from 'echarts'
 
-  let colorPalette = [
+let colorPalette = [
     '#c12e34',
     '#e6b600',
     '#0098d9',
@@ -41,9 +15,7 @@
     color: colorPalette,
 
     title: {
-      textStyle: {
-        fontWeight: 'normal',
-      },
+      fontWeight: 'normal',
     },
 
     visualMap: {
@@ -52,9 +24,7 @@
 
     toolbox: {
       iconStyle: {
-        normal: {
-          borderColor: '#06467c',
-        },
+        borderColor: '#06467c',
       },
     },
 
@@ -73,23 +43,19 @@
         color: '#005eaa',
       },
       controlStyle: {
-        normal: {
-          color: '#005eaa',
-          borderColor: '#005eaa',
-        },
+        color: '#005eaa',
+        borderColor: '#005eaa',
       },
     },
 
     candlestick: {
       itemStyle: {
-        normal: {
+        color: '#c12e34',
+        color0: '#2b821d',
+        lineStyle: {
+          width: 1,
           color: '#c12e34',
           color0: '#2b821d',
-          lineStyle: {
-            width: 1,
-            color: '#c12e34',
-            color0: '#2b821d',
-          },
         },
       },
     },
@@ -99,24 +65,14 @@
     },
 
     map: {
-      label: {
-        normal: {
-          textStyle: {
-            color: '#c12e34',
-          },
-        },
-        emphasis: {
-          textStyle: {
-            color: '#c12e34',
-          },
-        },
-      },
+      label: { color: '#c12e34' },
+      emphasis: { label: { color: '#c12e34' } },
       itemStyle: {
-        normal: {
-          borderColor: '#eee',
-          areaColor: '#ddd',
-        },
-        emphasis: {
+        borderColor: '#eee',
+        areaColor: '#ddd',
+      },
+      emphasis: {
+        itemStyle: {
           areaColor: '#e6b600',
         },
       },
@@ -138,9 +94,7 @@
         },
       },
       axisLabel: {
-        textStyle: {
-          color: 'auto',
-        },
+        color: 'auto',
       },
       splitLine: {
         length: 12,
@@ -154,9 +108,7 @@
         color: 'auto',
       },
       title: {
-        textStyle: {
-          color: '#333',
-        },
+        color: '#333',
       },
       detail: {
         textStyle: {
@@ -165,5 +117,8 @@
       },
     },
   }
+if (echarts && typeof echarts.registerTheme === 'function') {
   echarts.registerTheme('shine', theme)
-})
+} else if (typeof console !== 'undefined' && console.error) {
+  console.error('ECharts is not loaded, failed to register shine theme')
+}

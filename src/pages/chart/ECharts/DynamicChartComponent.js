@@ -4,6 +4,7 @@ import ReactEcharts from 'echarts-for-react'
 class DynamicChartComponent extends React.Component {
   constructor(props) {
     super(props)
+    this.echartsRef = React.createRef()
     this.timeTicket = null
     this.count = 51
 
@@ -99,6 +100,7 @@ class DynamicChartComponent extends React.Component {
           name: '价格',
           max: 20,
           min: 0,
+          alignTicks: false,
           boundaryGap: [0.2, 0.2],
         },
         {
@@ -107,6 +109,7 @@ class DynamicChartComponent extends React.Component {
           name: '预购量',
           max: 1200,
           min: 0,
+          alignTicks: false,
           boundaryGap: [0.2, 0.2],
         },
       ],
@@ -117,9 +120,7 @@ class DynamicChartComponent extends React.Component {
           xAxisIndex: 1,
           yAxisIndex: 1,
           itemStyle: {
-            normal: {
-              barBorderRadius: 4,
-            },
+            borderRadius: 4,
           },
           animationEasing: 'elasticOut',
           animationDelay(idx) {
@@ -193,17 +194,13 @@ class DynamicChartComponent extends React.Component {
 
   render() {
     let code =
-      "<ReactEcharts ref='echartsInstance' \n" +
+      "<ReactEcharts ref={this.echartsRef} \n" +
       '    option={this.state.option} />\n'
     return (
       <div className="examples">
         <div className="parent">
           <label> use React state to render dynamic chart</label>
-          <ReactEcharts
-            ref="echarts_react"
-            option={this.state.option}
-            style={{ height: 400 }}
-          />
+          <ReactEcharts ref={this.echartsRef} option={this.state.option} style={{ height: 400 }} />
           <label> code below: use state of react to render dynamic chart</label>
           <pre>
             <code>{code}</code>

@@ -52,12 +52,12 @@ const ThemeChartComponent = () => {
         type: 'bar',
         stack: '总量',
         itemStyle: {
-          normal: {
-            barBorderColor: 'rgba(0,0,0,0)',
-            color: 'rgba(0,0,0,0)',
-          },
-          emphasis: {
-            barBorderColor: 'rgba(0,0,0,0)',
+          borderColor: 'rgba(0,0,0,0)',
+          color: 'rgba(0,0,0,0)',
+        },
+        emphasis: {
+          itemStyle: {
+            borderColor: 'rgba(0,0,0,0)',
             color: 'rgba(0,0,0,0)',
           },
         },
@@ -68,10 +68,8 @@ const ThemeChartComponent = () => {
         type: 'bar',
         stack: '总量',
         label: {
-          normal: {
-            show: true,
-            position: 'top',
-          },
+          show: true,
+          position: 'top',
         },
         data: [900, 345, 393, '-', '-', 135, 178, 286, '-', '-', '-'],
       },
@@ -80,10 +78,8 @@ const ThemeChartComponent = () => {
         type: 'bar',
         stack: '总量',
         label: {
-          normal: {
-            show: true,
-            position: 'bottom',
-          },
+          show: true,
+          position: 'bottom',
         },
         data: ['-', '-', '-', 108, 154, '-', '-', '-', 119, 361, 203],
       },

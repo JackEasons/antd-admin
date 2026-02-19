@@ -430,16 +430,12 @@ const LunarCalendarComponent = () => {
           coordinateSystem: 'calendar',
           symbolSize: 1,
           label: {
-            normal: {
-              show: true,
-              formatter(params) {
-                let d = echarts.number.parseDate(params.value[0])
-                return `${d.getDate()}\n\n${params.value[2]}\n\n`
-              },
-              textStyle: {
-                color: '#000',
-              },
+            show: true,
+            formatter(params) {
+              let d = echarts.number.parseDate(params.value[0])
+              return `${d.getDate()}\n\n${params.value[2]}\n\n`
             },
+            color: '#000',
           },
           data: lunarData,
         },
@@ -448,17 +444,13 @@ const LunarCalendarComponent = () => {
           coordinateSystem: 'calendar',
           symbolSize: 1,
           label: {
-            normal: {
-              show: true,
-              formatter(params) {
-                return `\n\n\n${params.value[3] || ''}`
-              },
-              textStyle: {
-                fontSize: 14,
-                fontWeight: 700,
-                color: '#a00',
-              },
+            show: true,
+            formatter(params) {
+              return `\n\n\n${params.value[3] || ''}`
             },
+            fontSize: 14,
+            fontWeight: 700,
+            color: '#a00',
           },
           data: lunarData,
         },

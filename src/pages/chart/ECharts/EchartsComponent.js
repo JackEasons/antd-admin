@@ -7,10 +7,8 @@ import ThemeChartComponent from './ThemeChartComponent'
 import ChartShowLoadingComponent from './ChartShowLoadingComponent'
 import ChartAPIComponent from './ChartAPIComponent'
 import DynamicChartComponent from './DynamicChartComponent'
-import MapChartComponent from './MapChartComponent'
 
-// v1.2.0 add 7 demo.
-import AirportCoordComponent from './AirportCoordComponent'
+// removed MapChartComponent and AirportCoordComponent
 import CalendarComponent from './CalendarComponent'
 import GaugeComponent from './GaugeComponent'
 import GCalendarComponent from './GCalendarComponent'
@@ -28,8 +26,7 @@ const EchartsComponent = ({ type }) => {
   if (type === 'events') return <ChartWithEventComponent />
   if (type === 'theme') return <ThemeChartComponent />
   if (type === 'dynamic') return <DynamicChartComponent />
-  if (type === 'map') return <MapChartComponent />
-  if (type === 'airport') return <AirportCoordComponent />
+  // map and airport chart types removed
   if (type === 'graph') return <GraphComponent />
   if (type === 'calendar') return <CalendarComponent />
   if (type === 'treemap') return <TreemapComponent />

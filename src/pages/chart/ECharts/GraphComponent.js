@@ -1325,10 +1325,8 @@ const GraphComponent = () => {
           layout: 'force',
           animation: false,
           label: {
-            normal: {
-              position: 'right',
-              formatter: '{b}',
-            },
+            position: 'right',
+            formatter: '{b}',
           },
           draggable: true,
           data: webkitDep.nodes.map((node, idx) => {

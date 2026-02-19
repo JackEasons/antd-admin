@@ -190,26 +190,20 @@ const TreemapComponent = () => {
     return [
       {
         itemStyle: {
-          normal: {
-            borderWidth: 0,
-            gapWidth: 5,
-          },
+          borderWidth: 0,
+          gapWidth: 5,
         },
       },
       {
         itemStyle: {
-          normal: {
-            gapWidth: 1,
-          },
+          gapWidth: 1,
         },
       },
       {
         colorSaturation: [0.35, 0.5],
         itemStyle: {
-          normal: {
-            gapWidth: 1,
-            borderColorSaturation: 0.6,
-          },
+          gapWidth: 1,
+          borderColorSaturation: 0.6,
         },
       },
     ]
@@ -248,9 +242,7 @@ const TreemapComponent = () => {
           formatter: '{b}',
         },
         itemStyle: {
-          normal: {
-            borderColor: '#fff',
-          },
+          borderColor: '#fff',
         },
         levels: getLevelOption(),
         data: diskData,

@@ -2,10 +2,12 @@ import React from 'react'
 import Highcharts from 'highcharts'
 import HighchartsMore from 'highcharts/highcharts-more'
 import Exporting from 'highcharts/modules/exporting'
+import Accessibility from 'highcharts/modules/accessibility'
 import HighchartsReact from 'highcharts-react-official'
 
 HighchartsMore(Highcharts)
 Exporting(Highcharts)
+Accessibility(Highcharts)
 
 const config = {
   chart: {

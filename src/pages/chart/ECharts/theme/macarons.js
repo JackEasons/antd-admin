@@ -1,32 +1,6 @@
-/* global define */
-;(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // eslint-disable-line
-    // AMD. Register as an anonymous module.
-    define(['exports', 'echarts'], factory) // eslint-disable-line
-  } else if (
-    typeof exports === 'object' &&
-    typeof exports.nodeName !== 'string'
-  ) {
-    // CommonJS
-    factory(exports, require('echarts'))
-  } else {
-    // Browser globals
-    factory({}, root.echarts)
-  }
-})(this, (exports, echarts) => {
-  let log = function(msg) {
-    if (typeof console !== 'undefined') {
-      /* eslint-disable */
-      console && console.error && console.error(msg)
-    }
-  }
-  if (!echarts) {
-    log('ECharts is not Loaded')
-    return
-  }
+import * as echarts from 'echarts'
 
-  let colorPalette = [
+let colorPalette = [
     '#2ec7c9',
     '#b6a2de',
     '#5ab1ef',
@@ -53,10 +27,8 @@
     color: colorPalette,
 
     title: {
-      textStyle: {
-        fontWeight: 'normal',
-        color: '#008acd',
-      },
+      fontWeight: 'normal',
+      color: '#008acd',
     },
 
     visualMap: {
@@ -66,9 +38,7 @@
 
     toolbox: {
       iconStyle: {
-        normal: {
-          borderColor: colorPalette[0],
-        },
+        borderColor: colorPalette[0],
       },
     },
 
@@ -135,8 +105,10 @@
         color: '#008acd',
       },
       controlStyle: {
-        normal: { color: '#008acd' },
-        emphasis: { color: '#008acd' },
+        color: '#008acd',
+      },
+      emphasis: {
+        controlStyle: { color: '#008acd' },
       },
       symbol: 'emptyCircle',
       symbolSize: 3,
@@ -150,13 +122,11 @@
 
     candlestick: {
       itemStyle: {
-        normal: {
+        color: '#d87a80',
+        color0: '#2ec7c9',
+        lineStyle: {
           color: '#d87a80',
           color0: '#2ec7c9',
-          lineStyle: {
-            color: '#d87a80',
-            color0: '#2ec7c9',
-          },
         },
       },
     },
@@ -167,19 +137,13 @@
     },
 
     map: {
-      label: {
-        normal: {
-          textStyle: {
-            color: '#d87a80',
-          },
-        },
-      },
+      label: { color: '#d87a80' },
       itemStyle: {
-        normal: {
-          borderColor: '#eee',
-          areaColor: '#ddd',
-        },
-        emphasis: {
+        borderColor: '#eee',
+        areaColor: '#ddd',
+      },
+      emphasis: {
+        itemStyle: {
           areaColor: '#fe994e',
         },
       },
@@ -215,5 +179,8 @@
     },
   }
 
+if (echarts && typeof echarts.registerTheme === 'function') {
   echarts.registerTheme('macarons', theme)
-})
+} else if (typeof console !== 'undefined' && console.error) {
+  console.error('ECharts is not loaded, failed to register macarons theme')
+}

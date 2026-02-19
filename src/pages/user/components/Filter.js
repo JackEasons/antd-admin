@@ -136,7 +136,7 @@ class Filter extends Component {
                   {i18n._('Reset')}
                 </Button>
               </div>
-              <Button type="ghost" onClick={onAdd}>
+              <Button onClick={onAdd}>
                 {i18n._('Create')}
               </Button>
             </Row>

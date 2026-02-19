@@ -29,23 +29,19 @@ class ChartAPIComponent extends React.Component {
           left: '10%',
           width: '80%',
           label: {
-            normal: {
-              formatter: '{b}预期',
-            },
-            emphasis: {
+            formatter: '{b}预期',
+          },
+          emphasis: {
+            label: {
               position: 'inside',
               formatter: '{b}预期: {c}%',
             },
           },
           labelLine: {
-            normal: {
-              show: false,
-            },
+            show: false,
           },
           itemStyle: {
-            normal: {
-              opacity: 0.7,
-            },
+            opacity: 0.7,
           },
           data: [
             { value: 60, name: '访问' },
@@ -62,24 +58,20 @@ class ChartAPIComponent extends React.Component {
           width: '80%',
           maxSize: '80%',
           label: {
-            normal: {
-              position: 'inside',
-              formatter: '{c}%',
-              textStyle: {
-                color: '#fff',
-              },
-            },
-            emphasis: {
+            position: 'inside',
+            formatter: '{c}%',
+            color: '#fff',
+          },
+          emphasis: {
+            label: {
               position: 'inside',
               formatter: '{b}实际: {c}%',
             },
           },
           itemStyle: {
-            normal: {
-              opacity: 0.5,
-              borderColor: '#fff',
-              borderWidth: 2,
-            },
+            opacity: 0.5,
+            borderColor: '#fff',
+            borderWidth: 2,
           },
           data: [
             { value: 30, name: '访问' },
