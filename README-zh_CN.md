@@ -1,88 +1,109 @@
-
 <p align="center">
-  <a href="http://github.com/zuiidea/antd-admin">
-    <img alt="antd-admin" height="64" src="./docs/_media/logo.svg">
-  </a>
+	<a href="http://github.com/zuiidea/antd-admin" target="_blank">
+		<img alt="antd-admin-logo" height="80" src="./public/logo.svg">
+	</a>
 </p>
 
 <h1 align="center">AntD Admin</h1>
 
 <div align="center">
 
-一套优秀的中后台前端解决方案
-
-[![antd](https://img.shields.io/badge/antd-^3.10.0-blue.svg?style=flat-square)](https://github.com/ant-design/ant-design)
-[![umi](https://img.shields.io/badge/umi-^2.2.1-orange.svg?style=flat-square)](https://github.com/umijs/umi)
-[![GitHub issues](https://img.shields.io/github/issues/zuiidea/antd-admin.svg?style=flat-square)](https://github.com/zuiidea/antd-admin/issues)
-[![MIT](https://img.shields.io/dub/l/vibe-d.svg?style=flat-square)](http://opensource.org/licenses/MIT)
-![Travis (.org)](https://img.shields.io/travis/zuiidea/antd-admin.svg)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/zuiidea/antd-admin/pulls)
-[![Gitter](https://img.shields.io/gitter/room/antd-admin/antd-admin.svg)](https://gitter.im/antd-admin/antd-admin)
+基于 Ant Design 6、Umi 4 与 TypeScript 构建的企业级前端解决方案。
 
 </div>
 
-- 在线演示 - [https://antd-admin.zuiidea.com](https://antd-admin.zuiidea.com)
-- 使用文档 - [https://doc.antd-admin.zuiidea.com/#/zh-cn/](https://doc.antd-admin.zuiidea.com/#/zh-cn/)
-- 常见问题 - [https://doc.antd-admin.zuiidea.com/#/zh-cn/faq](https://doc.antd-admin.zuiidea.com/#/zh-cn/faq)
-- 更新日志 - [https://doc.antd-admin.zuiidea.com/#/zh-cn/change-log](https://doc.antd-admin.zuiidea.com/#/zh-cn/change-log)
+---
 
-[English](./README.md) | 简体中文
+## 📖 项目简介
 
-## 特性
+**AntD Admin** 是一个轻量、高性能的管理后台模板，旨在为构建企业级应用提供干净、可扩展的起点。项目使用 **Ant Design 6**、**Umi 4** 与 **TypeScript** 的最新特性，减轻样板代码，提升开发体验。
 
-- 国际化，源码中抽离翻译字段，按需加载语言包
-- 动态权限，不同权限对应不同菜单
-- 优雅美观，Ant Design 设计体系
-- Mock 数据，本地数据调试
+无论您要构建仪表盘、管理系统，还是集成 AI 功能的工具，本项目都能提供必要的基础。
 
+## ✨ 主要特性
 
-## 使用
+- 🚀 **现代栈**：基于 **Ant Design 6** + **Umi 4** + **TypeScript**。
+- 🎨 **清晰架构**：使用 `zustand` 进行轻量状态管理。
+- 🛠 **良好的开发体验**：内置本地 mock 服务器（`mock/index.js`），无需后端即可开发前端功能。
+- 📦 **丰富示例页面**：包含可直接使用的页面示例：
+	- 📊 **仪表盘**：数据可视化概览。
+	- 👥 **用户管理**：CRUD 操作示例。
+	- 🧩 **菜单管理**：动态路由配置示例。
+	- 🤖 **AI 聊天示例**：大模型（LLM）接口集成示例。
+- ✅ **CI/CD 支持**：预配置的 GitHub Actions 工作流，用于 lint 和构建。
 
-1. 下载项目代码。
+## 🚀 快速开始
 
-```bash
-git clone https://github.com/zuiidea/antd-admin.git my-project
-cd my-project
-```
-
-2. 进入目录安装依赖，国内用户推荐使用 [cnpm](https://cnpmjs.org) 进行加速。
+建议使用 **pnpm** 进行包管理。
 
 ```bash
-yarn install
+# 1. 克隆仓库
+git clone https://github.com/zuiidea/antd-admin.git -b master --depth=1
+cd antd-admin
+
+# 2. 安装依赖
+pnpm install
+
+# 3. 启动本地开发（含 mock 数据）
+npm run dev
+
+# 4. 构建生产包
+npm run build
+
+# 5. 代码质量检查
+npm run lint
+npm run format
 ```
 
-或者
+🔌 开发说明
 
-```bash
-npm install
-```
+#### Mock 服务
 
-3. 启动本地服务器。
+项目包含位于 `mock/index.js` 的内置 mock 服务，方便在没有后端的情况下独立开发前端功能。
 
-```bash
-npm run start
-```
+如需关闭 mock 或切换到真实 API，请修改项目的代理配置（例如 Umi 项目可能的配置文件 `config/proxy.ts`、`.umirc.ts` 或 `config/config.ts`），以匹配您的实际项目结构。
 
-4. 启动完成后打开浏览器访问 [http://localhost:7000](http://localhost:7000)，如果需要更改启动端口，可在 `.env` 文件中配置。
+#### 常用路由
 
-5. 登录账号有2个，一个账号admin 密码admin;另一个账号guest 密码guest
+| 路由 | 说明 |
+| --- | --- |
+| `/` 或 `/dashboard` | 主仪表盘 |
+| `/users` | 用户列表与管理 |
+| `/sys/menu` | 系统菜单配置 |
+| `/ai/chat` | AI 聊天示例界面 |
 
-> 更多信息请参考 [使用文档](https://doc.antd-admin.zuiidea.com/#/zh-cn/)。
+#### 定制化
 
+- **API 集成：** 在 `src/services` 中更新 API 接口以对接真实后端。
+- **组件扩展：** 在 `src/components` 中复用或扩展现有组件（例如 `DropOption`、`StandardTable`）。
+- **主题：** 在主题配置中自定义 Ant Design 变量以匹配品牌视觉。
 
-## 支持环境
+#### GitHub Actions（CI）
 
-现代浏览器。
+仓库包含预配置的 GitHub Actions 工作流（见 `.github/workflows/ci.yml`），用于保证代码质量：
 
-| [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="IE / Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>IE / Edge | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Safari | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png" alt="Opera" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Opera |
-| --------- | --------- | --------- | --------- | --------- | 
-|IE11, Edge| last 2 versions| last 2 versions| last 2 versions| last 2 versions
+- 使用 `pnpm` 安装依赖。
+- 运行 lint 检查。
+- 构建生产包。
 
-## 参与贡献  
+- **工作流位置：** `.github/workflows/ci.yml`
+- **提示：** 若要在 CI 中加入自动化测试，请在 `package.json` 中添加测试脚本并更新 workflow YAML。
 
-我们非常欢迎你的贡献，你可以通过以下方式和我们一起共建 :smiley:
-- 在你的公司或个人项目中使用 AntD Admin。
-- 通过 [Issue](http://github.com/zuiidea/antd-admin/issues) 报告 bug 或进行咨询。
-- 提交 [Pull Request](http://github.com/zuiidea/antd-admin/pulls) 改进代码。
+## 🤝 贡献
 
-> 强烈推荐阅读 [《提问的智慧》](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way)、[《如何向开源社区提问题》](https://github.com/seajs/seajs/issues/545) 和 [《如何有效地报告 Bug》](http://www.chiark.greenend.org.uk/%7Esgtatham/bugs-cn.html)、[《如何向开源项目提交无法解答的问题》](https://zhuanlan.zhihu.com/p/25795393)，更好的问题更容易获得帮助。
+欢迎各类贡献：修复 bug、添加新示例页面或组件、完善类型定义与 lint 规则、改进国际化等。
+
+常见贡献流程：
+
+1. Fork 仓库。
+2. 新建分支：`git checkout -b feature/AmazingFeature`。
+3. 提交变更：`git commit -m 'Add some AmazingFeature'`。
+4. 推送分支：`git push origin feature/AmazingFeature`。
+5. 提交 Pull Request。
+
+## 📄 许可证
+
+本项目采用 MIT 许可证。
+
+由 zuiidea 与贡献者共同维护，Made with ❤️。
+

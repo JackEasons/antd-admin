@@ -1,50 +1,26 @@
-## 5.0.0
+## 6.0.0
 
-#### Optimization
+This project was modernized and migrated to a modern front-end stack. Key highlights of the current version:
 
-- Try to use decorators to simplify code writing and improve code readability.
+### Modern stack
+- Upgraded to Ant Design 6, Umi 4 and TypeScript 5.
+- React has been updated to the current major line used in the repo (see `package.json`).
 
-- API configurization to simplify the way data is obtained.
+### Architecture & DX
+- Services are implemented as TypeScript modules under `src/services/` and use a centralized HTTP helper `src/utils/request.ts`.
+- Lightweight local state management using `zustand` replacing older `dva` patterns.
+- Local mock server using `mock/index.js` with `mockjs` for frontend development without backend dependency.
 
-- The files in `utils` are split and each has its own role.
+### Tooling & CI
+- Dev workflows use `pnpm` by default; scripts are defined in `package.json` (e.g. `pnpm run dev`, `pnpm run build`).
+- Tests use `jest` and related tooling; CI is implemented with GitHub Actions (`.github/workflows/ci.yml`) which installs via `pnpm`, lints and builds the project.
 
-- Simplify the `utils/request` file without special handling.
+### Quality and types
+- TypeScript types are added/expanded under `src/types/` for safer APIs and components.
+- Prettier / ESLint configuration added to enforce code style.
 
-#### Specification
+### Other
+- Documentation is maintained under `docs/` (this site) and updated to reflect the new stack and commands.
+- Removed old custom components that duplicate Ant Design functionality and simplified the codebase accordingly.
 
-- Functions add comments, parameters, return values, etc., ambiguous code adds comments, canonical reference [Google JavaScript Style Guide](https://google.github.io/styleguide/jsguide.html#appendices-jsdoc-tag-reference).
-  
-- Semantic version number, specification participation [semantic version 2.0.0](https://semver.org/lang/zh-CN/).
-
-- Static code checking, unified code style, will use `prettier`, `stylelint`, `eslint` specification code before code submission.
-
-- Git submits information normalization, [git-commit-emoji-cn](https://github.com/liuchengxu/git-commit-emoji-cn).
-
-- Based on the pre-defined routing of `Umi`, there is no need to write a routing configuration file.
-
-- Use `React 16` new features such as `Fragment`, `Context`, `PureComponent`, etc.
-
-#### Features
-
-- Support internationalization, extract source fields from source code, load language packs on demand, and automatically translate online.
-
-- Support for the introduction `lodash` functions on demand.
-  
-- Support multiple layouts, which rules can be used according to the rules.
-
-- Support Antd Admin to automatically compile and deploy on Travis.
-
-- Generate a documentation website using `Docsify`.
-
-
-#### Style
-
-- Added Antd Admin standalone Logo.
-
-- Rewrite the overall layout component, optimize the menu, automatic breadcrumb navigation, menu auto-expansion and other logic.
-
-- The mobile menu is changed to drawer.
-
-#### Other
-
-- Discard components such as `IconFont`, `Search`, `DataTable` because they are well supported and replaceable in `Antd`.
+If you want a more detailed, commit-level changelog for each migration step, I can generate one from git history or help draft a migration guide.

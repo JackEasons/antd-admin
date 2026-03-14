@@ -57,4 +57,4 @@ Take a new layout named `secondary` as an example to make the route starting wit
    }
 ```
 
-5. Finally, start the development mode `npm run start`, open [http://localhost:7000/secondary/](http://localhost:7000/secondary/) and you will see the page for the `secondary` layout.
+5. Finally, start the development mode with `npm run dev`, then open the layout page in your browser (see dev server output for the actual URL), e.g. `/secondary/`.

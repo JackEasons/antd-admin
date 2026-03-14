@@ -57,4 +57,4 @@
    }
    ```
 
-5. 最后，启动开发模式 `npm run start`，打开 [http://localhost:7000/secondary/](http://localhost:7000/secondary/)，你将看到 `secondary` 布局的页面。
+5. 最后，使用 `npm run dev` 启动开发模式，然后在浏览器中打开该布局页面（查看开发服务器输出以获取实际 URL），例如 `/secondary/`。

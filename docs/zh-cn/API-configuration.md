@@ -1,86 +1,35 @@
 # 接口配置
 
-## 为什么
+本项目使用基于 TypeScript 的按功能分割服务模块，位于 `src/services/`，所有服务通过共享的 HTTP 封装 `src/utils/request.ts`（默认导出为 `api` 函数）发起请求。
 
-在使用了`redux`或者`dva`项目中，我们经常会写类似下面的`service`层的函数，使代码结构更清晰，但是很容易看出，我们会写很多相似的代码，在`antd-admin@5.0`中，使用了更加简洁的配置方式实现了相同的功能。
+为什么采用此模式？
+- 每个领域（user/admin/menu/dashboard）有独立函数，职责清晰。
+- 使用 TypeScript 提供输入/输出类型定义，便于维护（参见 `src/types`）。
+- 请求处理集中化（查询参数、JSON body、鉴权 header、统一响应格式等）在 `src/utils/request.ts`。
 
-```javascript
-export async function login(data) {
-  return request({
-    url: '/api/v1/user/login',
-    method: 'post',
-    data,
-  })
+示例（来自 `src/services/user.ts`）：
+
+```ts
+import type { PagedResponse, User } from '@/types/user';
+import api from '../utils/request';
+
+export async function listUsers(
+  params?: Record<string, string | number | boolean>,
+): Promise<PagedResponse<User>> {
+  return api<PagedResponse<User>>('/users', { method: 'GET', params });
+}
+
+export async function createUser(values: Record<string, unknown>): Promise<User> {
+  return api('/user', { method: 'POST', body: values });
 }
 ```
 
-## 配置和使用
+使用方式：
+- 通过 `import { listUsers } from '@/services/user'` 导入命名函数。
+- `api(path, options)` 返回后端约定格式 `{ success, message, data }` 中的 `data` 字段。
 
-在`src/services/api.js`文件中，你会看到如下配置对象，对象的键用于调用时的函数名称，对象的值为请求的`url`，默认请求方式为`GET`，如果是其他请求方式对象的值的格式则为`'method url'`。
+关于 `src/utils/request.ts`：
+- 会将 `config.apiPrefix` 与 `path` 拼接；支持 `params`（查询）、`body`（JSON 或 FormData）；若存在本地 token 则自动注入 `Authorization`。
+- 对非成功响应会抛出异常并在界面上显示消息（使用 `antd` 的 `message`）。
 
-```javascript
-export default {
-  ...
-  queryUser: '/user/:id',
-  queryUserList: '/users',
-  updateUser: 'Patch /user/:id',
-  createUser: 'POST /user/:id',
-  removeUser: 'DELETE /user/:id',
-  removeUserList: 'POST /users/delete',
-  ...
-}
-```
-
-在其他文件中使用
-
-```javascript
-import { queryUser } from 'api'
-
-// 一般文件中
-...
-queryUser(option).then(data => console.log(data))
-...
-
-// model文件中
-...
-yield call(queryUser, option)
-...
-```
-
-## 实现方式
-
-参考`src/services/index.js`文件，对api配置进行遍历，每个属性都返回对应的封装后的request函数。
-
-```javascript
-import request from 'utils/request'
-import { apiPrefix } from 'utils/config'
-
-import api from './api'
-
-const gen = params => {
-  let url = apiPrefix + params
-  let method = 'GET'
-
-  const paramsArray = params.split(' ')
-  if (paramsArray.length === 2) {
-    method = paramsArray[0]
-    url = apiPrefix + paramsArray[1]
-  }
-
-  return function(data) {
-    return request({
-      url,
-      data,
-      method,
-    })
-  }
-}
-
-const APIFunction = {}
-for (const key in api) {
-  APIFunction[key] = gen(api[key])
-}
-
-module.exports = APIFunction
-
-```
+如果你在迁移旧的 API 映射实现，建议按当前结构将功能拆分为小型服务模块并补充类型定义。

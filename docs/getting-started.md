@@ -1,6 +1,6 @@
 # Quick Start
 
-> Before delving into Ant Design React, a good knowledge base of [React](http://facebook.github.io/react/) 、 [ES2015+](http://es6.ruanyifeng.com/) 、 [Antd Design](https://ant.design/docs/react/introduce-cn) .  Learn about [UmiJS](https://umijs.org/) , [Dva](http://github.com/dvajs/dva) . And properly installed and configured [Node.js](https://nodejs.org/) v8 or above, [Git](https://git-scm.com/). It would be helpful if you have pre-existing knowledge on those.
+> Before delving into Ant Design React, a good knowledge base of [React](http://facebook.github.io/react/) 、 [ES2015+](http://es6.ruanyifeng.com/) 、 [Antd Design](https://ant.design/docs/react/introduce-cn). Learn about [UmiJS](https://umijs.org/). Ensure you have [Node.js](https://nodejs.org/) (v18+ recommended) and [Git](https://git-scm.com/) installed.
 
 ## Installation
 
@@ -52,22 +52,24 @@ The project layout is as follows:
 
 ## Development
 
-1. Install Dependencies.
+1. Install dependencies (recommended: `pnpm`).
 
 ```bash
-yarn install
+pnpm install
 ```
 
-Or
+Or with other package managers:
 
 ```bash
 npm install
+# or
+yarn install
 ```
 
-2. Start local server.
+2. Start local development server.
 
 ```bash
-npm run start
+npm run dev
 ```
 
-3.  After the startup is complete, open a browser and visit [http://localhost:7000](http://localhost:7000), If you need to change the startup port, you can configure it in the `.env` file.
+3. After startup, open the app in a browser (see dev server output for the actual URL/port).

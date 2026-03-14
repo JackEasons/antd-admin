@@ -9,32 +9,29 @@ git clone https://github.com/zuiidea/antd-admin.git my-project
 cd my-project
 ```
 
-## 目录结构
-
-应用的目录结构如下
+1. 克隆项目并安装依赖（推荐使用 `pnpm`）。
 
 ```bash
-├── dist/               # 默认build输出目录
-├── mock/               # Mock文件目录
-├── public/             # 静态资源文件目录
-├── src/                # 源码目录
-│ ├── components/       # 组件目录
-│ ├── e2e/              # e2e目录
-│ ├── layouts/          # 布局目录
-│ ├── locales/          # 国际化文件目录
-│ ├── models/           # 数据模型目录
-│ ├── pages/            # 页面组件目录
-│ ├── services/         # 数据接口目录
-│ │ ├── api.js          # 接口配置
-│ │ └── index.js        # 接口输出
-│ ├── themes/           # 项目样式目录
-│ │ ├── default.less    # 样式变量
-│ │ ├── index.less      # 全局样式
-│ │ ├── mixin.less      # 样式函数
-│ │ └── vars.less       # 样式变量及函数
-│ ├── utils/            # 工具函数目录
-│ │ ├── config.js       # 项目配置
-│ │ ├── constant.js     # 静态常量
+git clone https://github.com/zuiidea/antd-admin.git my-project
+cd my-project
+pnpm install
+```
+
+或使用其它包管理器：
+
+```bash
+npm install
+# 或
+yarn install
+```
+
+2. 启动开发模式：
+
+```bash
+npm run dev
+```
+
+3. 启动完成后在浏览器打开项目（查看开发服务器输出以获取实际 URL/端口）。
 │ │ ├── index.js        # 工具函数
 │ │ ├── request.js      # 异步请求函数(axios)
 │ │ └── theme.js        # 项目需要在js中使用到样式变量
@@ -52,22 +49,21 @@ cd my-project
 
 ## 本地开发
 
-1. 进入目录安装依赖，国内用户推荐使用 [cnpm](https://cnpmjs.org) 进行加速
+项目推荐使用 `pnpm` 进行依赖管理：
 
 ```bash
-yarn install
+pnpm install
+npm run dev
 ```
 
-或者
+也可以使用 `npm` 或 `yarn`：
 
 ```bash
 npm install
+# 或
+yarn install
+# 然后使用对应的启动命令，例如 `npm run dev` 或 `yarn dev`（若 package.json 中配置了），
+# 本仓库默认开发脚本为 `npm run dev`。
 ```
 
-2. 启动本地服务器
-
-```bash
-npm run start
-```
-
-3. 启动完成后打开浏览器访问 [http://localhost:7000](http://localhost:7000)，如果需要更改启动端口，可在 `.env` 文件中配置。
+启动后在浏览器打开项目（查看开发服务器输出以获取实际 URL/端口）。

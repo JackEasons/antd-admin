@@ -1,86 +1,36 @@
 # API configuration
 
-## Why
+This project uses explicit per-feature service modules (TypeScript) under `src/services/` that call a shared HTTP helper `src/utils/request.ts` (exported as the default `api` function).
 
-In the use of `redux` or `dva` projects, we often write functions like the following `service` layer to make the code structure clearer, but it is easy to see that we will write a lot of similar code in `antd -admin@5.0`, using the more concise configuration method to achieve the same function.
+Why this pattern?
+- Clear function boundaries per domain (users, admin, menu, dashboard).
+- Type-safe signatures in TypeScript for inputs/outputs (`src/types`).
+- Centralized request handling (query params, JSON body, auth header, unified response format) in `src/utils/request.ts`.
 
-```javascript
-export async function login(data) {
-  return request({
-    url: '/api/v1/user/login',
-    method: 'post',
-    data,
-  })
+Example service (from `src/services/user.ts`):
+
+```ts
+import type { PagedResponse, User } from '@/types/user';
+import api from '../utils/request';
+
+export async function listUsers(
+	params?: Record<string, string | number | boolean>,
+): Promise<PagedResponse<User>> {
+	return api<PagedResponse<User>>('/users', { method: 'GET', params });
+}
+
+export async function createUser(values: Record<string, unknown>): Promise<User> {
+	return api('/user', { method: 'POST', body: values });
 }
 ```
 
-## Configuration and use
+Usage:
+- Import named functions from the service module: `import { listUsers } from '@/services/user'`.
+- The helper `api(path, options)` returns the parsed `data` payload from responses that follow the `{ success, message, data }` convention.
 
-In the `src/services/api.js` file, you will see the following configuration object, the object's key is used to call the function name, the object's value is the requested `url`, the default request method is `GET`, The format of the value of the other request mode object is `'method url'`.
+Notes about `src/utils/request.ts`:
+- Combines `config.apiPrefix` with the provided `path`.
+- Supports `params` (query), `body` (JSON or FormData), and sets `Authorization` header from local storage when available.
+- Throws errors and shows UI messages for non-success responses.
 
-```javascript
-export default {
-  ...
-  queryUser: '/user/:id',
-  queryUserList: '/users',
-  updateUser: 'Patch /user/:id',
-  createUser: 'POST /user/:id',
-  removeUser: 'DELETE /user/:id',
-  removeUserList: 'POST /users/delete',
-  ...
-}
-```
-
-Used in other files
-
-```javascript
-import { queryUser } from 'api'
-
-// in the general file
-...
-queryUser(option).then(data => console.log(data))
-...
-
-/ / Model file
-...
-yield call(queryUser, option)
-...
-```
-
-## Method to realize
-
-Refer to the `src/services/index.js` file to traverse the api configuration. Each property returns the corresponding encapsulated request function.
-
-```javascript
-import request from 'utils/request'
-import { apiPrefix } from 'utils/config'
-
-import api from './api'
-
-const gen = params => {
-  let url = apiPrefix + params
-  let method = 'GET'
-
-  const paramsArray = params.split(' ')
-  if (paramsArray.length === 2) {
-    method = paramsArray[0]
-    url = apiPrefix + paramsArray[1]
-  }
-
-  return function(data) {
-    return request({
-      url,
-      data,
-      method,
-    })
-  }
-}
-
-const APIFunction = {}
-for (const key in api) {
-  APIFunction[key] = gen(api[key])
-}
-
-module.exports = APIFunction
-
-```
+If you are migrating older code that used an API mapping, prefer creating small service modules with clear function names and types as shown above.
